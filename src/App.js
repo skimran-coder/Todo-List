@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Body from './Components/Body';
 
 function App() {
+  const [isDark, setIsDark] = useState(
+    localStorage.getItem("theme") === "true" // Convert to boolean
+  );
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App *:m-0 *:p-0 *:box-border *:overflow-x-hidden w-screen h-screen flex justify-center items-center text-text-light bg-background-light dark:bg-background-dark dark:text-text-dark ${isDark && "dark"} `}>
+      <Body isDark={isDark} setIsDark={setIsDark}/>
     </div>
   );
 }
